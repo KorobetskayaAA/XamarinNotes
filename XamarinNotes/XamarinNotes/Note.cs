@@ -8,6 +8,7 @@ namespace XamarinNotes
     public class Note
     {
         public string FileName { get; set; }
+        public string Header { get; set; }
         public string Text { get; set; }
         public DateTime CreationDate { get; set; }
 
@@ -19,13 +20,14 @@ namespace XamarinNotes
 
         public override string ToString()
         {
-            return $"{CreationDate}\n{Text}";
+            return $"{CreationDate}\n{Header}\n{Text}";
         }
 
         public void FromString(string text)
         {
             string[] lines = text.Split('\n');
-            Text = string.Join("\n", lines.Skip(1));
+            Text = string.Join("\n", lines.Skip(2));
+            Header = lines.Length > 1 ? lines[1] : "";
             try
             {
                 CreationDate = DateTime.Parse(lines[0]);

@@ -16,9 +16,6 @@ namespace XamarinNotes
         public NoteEntryPage()
         {
             InitializeComponent();
-
-
-            noteTextEditor.Text = FileManager.LoadText();
         }
 
         async private void ButtonSave_Clicked(object sender, EventArgs e)

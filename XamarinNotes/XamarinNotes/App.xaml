@@ -18,7 +18,7 @@
         <Style x:Key="Header" TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="FontSize" Value="Large"/>
-            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="buttonBase" TargetType="Button">

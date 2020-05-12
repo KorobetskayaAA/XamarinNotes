@@ -15,7 +15,7 @@
     <ListView x:Name="noteView" Margin="5" ItemSelected="ListView_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Text}"
+                <TextCell Text="{Binding Header}"
                           Detail="{Binding CreationDate,StringFormat='{0:dd.MM.yyyy HH:mm}'}" />
             </DataTemplate>
         </ListView.ItemTemplate>

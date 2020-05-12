@@ -12,7 +12,10 @@
             <RowDefinition Height="45" />
         </Grid.RowDefinitions>
         
-        <Label Grid.Row="0" Text="Заметка" Style="{StaticResource Header}" />
+        <Entry Grid.Row="0" 
+               Text="{Binding Header}"
+               Placeholder="Введите заголовок"
+               Style="{StaticResource Header}" />
         
         <Editor Grid.Row="1" 
                 x:Name="noteTextEditor"
