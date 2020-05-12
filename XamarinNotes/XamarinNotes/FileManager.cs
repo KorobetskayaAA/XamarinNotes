@@ -15,6 +15,11 @@ namespace XamarinNotes
             return Path.Combine(filePath, defaultFileName);
         }
 
+        public static string RandomFileName
+        {
+            get => $"{Path.GetRandomFileName()}.{defaultFileName}";
+        }
+
         static public void SaveText(string text)
         {
             File.WriteAllText(FileFullPath(), text);

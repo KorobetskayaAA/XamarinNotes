@@ -17,7 +17,9 @@
         <Editor Grid.Row="1" 
                 x:Name="noteTextEditor"
                 Placeholder="Введите текст заметки" 
-                HeightRequest="100" />
+                HeightRequest="100"
+                Text="{Binding Text}"
+                />
         
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
