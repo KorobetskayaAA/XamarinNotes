@@ -7,5 +7,36 @@
              x:Class="XamarinNotes.App">
     <Application.Resources>
 
+        <Thickness x:Key="pageMargin">7</Thickness>
+
+        <Color x:Key="colorBackground">WhiteSmoke</Color>
+        <Color x:Key="colorToolbar">Black</Color>
+        <Color x:Key="colorSuccess">#5FE268</Color>
+        <Color x:Key="colorDanger">#FF6F64</Color>
+        <Color x:Key="colorWarning">#FFC107</Color>
+
+        <Style x:Key="Header" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        </Style>
+
+        <Style x:Key="buttonBase" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="buttonSuccess" TargetType="Button" BasedOn="{StaticResource buttonBase}">
+            <Setter Property="BackgroundColor" Value="{StaticResource colorSuccess}"/>
+        </Style>
+
+        <Style x:Key="buttonDanger" TargetType="Button" BasedOn="{StaticResource buttonBase}">
+            <Setter Property="BackgroundColor" Value="{StaticResource colorDanger}"/>
+        </Style>
+
+        <Style x:Key="buttonWarning" TargetType="Button" BasedOn="{StaticResource buttonBase}">
+            <Setter Property="BackgroundColor" Value="{StaticResource colorWarning}"/>
+        </Style>
+
+
     </Application.Resources>
 </Application>

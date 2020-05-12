@@ -5,19 +5,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamarinNotes.MainPage">
-
-    <Grid>
+    <Grid Margin="{StaticResource pageMargin}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
             <RowDefinition Height="45" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Text="Заметка" />
+        <Label Grid.Row="0" Text="Заметка" Style="{StaticResource Header}" />
         <Editor Grid.Row="1" Placeholder="Введите текст заметки" HeightRequest="100" />
-        <FlexLayout Grid.Row="2" Wrap="Wrap">
-            <Button Text="Сохранить"/>
-            <Button Text="Удалить"/>
-        </FlexLayout>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Text="Сохранить" Style="{StaticResource buttonSuccess}"/>
+            <Button Grid.Column="1" Text="Удалить" Style="{StaticResource buttonDanger}"/>
+        </Grid>
     </Grid>
 
 </ContentPage>
