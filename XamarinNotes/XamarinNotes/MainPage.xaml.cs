@@ -16,6 +16,19 @@ namespace XamarinNotes
         public MainPage()
         {
             InitializeComponent();
+
+            noteTextEditor.Text = FileManager.LoadText();
+        }
+
+        private void ButtonSave_Clicked(object sender, EventArgs e)
+        {
+            FileManager.SaveText(noteTextEditor.Text);
+        }
+
+        private void ButtonDelete_Clicked(object sender, EventArgs e)
+        {
+            FileManager.DeleteFile();
+            noteTextEditor.Text = string.Empty;
         }
     }
 }
