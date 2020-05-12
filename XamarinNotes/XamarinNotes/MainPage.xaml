@@ -6,11 +6,18 @@
              mc:Ignorable="d"
              x:Class="XamarinNotes.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Text="Заметка" />
+        <Editor Grid.Row="1" Placeholder="Введите текст заметки" HeightRequest="100" />
+        <FlexLayout Grid.Row="2" Wrap="Wrap">
+            <Button Text="Сохранить"/>
+            <Button Text="Удалить"/>
+        </FlexLayout>
+    </Grid>
 
 </ContentPage>
