@@ -1,34 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace XamarinNotes
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
-
-            noteTextEditor.Text = FileManager.LoadText();
         }
 
-        private void ButtonSave_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            FileManager.SaveText(noteTextEditor.Text);
+            base.OnAppearing();
+
+            var notes = new List<Note>();
+
+            foreach (var fileName in FileManager.AllFiles())
+            {
+                var note = new Note() { FileName = fileName };
+                note.FromString(FileManager.LoadText(fileName));
+                notes.Add(note);
+            }
+
+            noteView.ItemsSource = notes.OrderBy(d => d.CreationDate).ToList();
         }
 
-        private void ButtonDelete_Clicked(object sender, EventArgs e)
+        async void ButtonAdd_Clicked(object sender, EventArgs e)
         {
-            FileManager.DeleteFile();
-            noteTextEditor.Text = string.Empty;
+            await Navigation.PushAsync(new NoteEntryPage()
+            {
+                BindingContext = new Note()
+            });
+        }
+
+        async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new NoteEntryPage()
+                {
+                    BindingContext = e.SelectedItem as Note
+                });
+            }
         }
     }
 }

@@ -10,9 +10,9 @@ namespace XamarinNotes
         const string defaultFileName = "note.txt";
         static string filePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-        static string FileFullPath()
+        static string FileFullPath(string fileName = defaultFileName)
         {
-            return Path.Combine(filePath, defaultFileName);
+            return Path.Combine(filePath, fileName);
         }
 
         public static string RandomFileName
@@ -20,26 +20,31 @@ namespace XamarinNotes
             get => $"{Path.GetRandomFileName()}.{defaultFileName}";
         }
 
-        static public void SaveText(string text)
+        static public void SaveText(string text, string fileName = defaultFileName)
         {
-            File.WriteAllText(FileFullPath(), text);
+            File.WriteAllText(FileFullPath(fileName), text);
         }
 
-        static public string LoadText()
+        static public string LoadText(string fileName = defaultFileName)
         {
-            if (File.Exists(FileFullPath()))
+            if (File.Exists(FileFullPath(fileName)))
             {
-                return File.ReadAllText(FileFullPath());
+                return File.ReadAllText(FileFullPath(fileName));
             }
             return string.Empty;
         }
 
-        static public void DeleteFile()
+        static public void DeleteFile(string fileName = defaultFileName)
         {
-            if (File.Exists(FileFullPath()))
+            if (File.Exists(FileFullPath(fileName)))
             {
-                File.Delete(FileFullPath());
+                File.Delete(FileFullPath(fileName));
             }
+        }
+
+        static public IEnumerable<string> AllFiles()
+        {
+            return Directory.EnumerateFiles(filePath, "*." + defaultFileName);
         }
 
     }

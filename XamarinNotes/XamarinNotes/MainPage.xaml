@@ -4,35 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="XamarinNotes.MainPage">
-    <Grid Margin="{StaticResource pageMargin}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="45" />
-        </Grid.RowDefinitions>
-        
-        <Label Grid.Row="0" Text="Заметка" Style="{StaticResource Header}" />
-        
-        <Editor Grid.Row="1" 
-                x:Name="noteTextEditor"
-                Placeholder="Введите текст заметки" 
-                HeightRequest="100"
-                Text="{Binding Text}"
-                />
-        
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Text="Сохранить" 
-                    Style="{StaticResource buttonSuccess}"
-                    Clicked="ButtonSave_Clicked"/>
-            <Button Grid.Column="1" Text="Удалить" 
-                    Style="{StaticResource buttonDanger}"
-                    Clicked="ButtonDelete_Clicked"/>
-        </Grid>
-    </Grid>
+             x:Class="XamarinNotes.MainPage"
+             Title="Заметки">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Order="Primary" 
+                     Clicked="ButtonAdd_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="noteView" Margin="5" ItemSelected="ListView_ItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Text}"
+                          Detail="{Binding CreationDate,StringFormat='{0:dd.MM.yyyy HH:mm}'}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
 </ContentPage>

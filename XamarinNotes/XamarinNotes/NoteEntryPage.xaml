@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinNotes.NoteEntryPage">
+    <Grid Margin="{StaticResource pageMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Text="Заметка" Style="{StaticResource Header}" />
+        
+        <Editor Grid.Row="1" 
+                x:Name="noteTextEditor"
+                Placeholder="Введите текст заметки" 
+                HeightRequest="100"
+                Text="{Binding Text}"
+                />
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Text="Сохранить" 
+                    Style="{StaticResource buttonSuccess}"
+                    Clicked="ButtonSave_Clicked"/>
+            <Button Grid.Column="1" Text="Удалить" 
+                    Style="{StaticResource buttonDanger}"
+                    Clicked="ButtonDelete_Clicked"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>
